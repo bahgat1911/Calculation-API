@@ -11,8 +11,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "calculation")
 public class CalculationEntity {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
+
 
     @Column(name = "number1")
     private double number1;
@@ -23,19 +25,28 @@ public class CalculationEntity {
     @Column(name = "operation")
     private String operation;
 
+
     @Column(name = "result")
     private double result;
 
     public CalculationEntity() {
     }
 
-    public CalculationEntity(double number1, double number2, String operation, double result) {
+    public CalculationEntity(Long ID, double number1, double number2, String operation, double result) {
+        this.ID = ID;
         this.number1 = number1;
         this.number2 = number2;
         this.operation = operation;
         this.result = result;
     }
 
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
 
     public double getNumber1() {
         return number1;
